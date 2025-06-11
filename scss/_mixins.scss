@@ -1,0 +1,26 @@
+
+
+@mixin transition($time) {
+    transition: all $time ease-in-out;
+    -moz-transition: all $time ease-in-out;
+    -webkit-transition: all $time ease-in-out;
+    -o-transition: all $time ease-in-out;
+    -ms-transition: all $time ease-in-out;
+}
+
+
+@mixin transform($value) {
+    transform: $value;
+    -moz-transform: $value;
+    -webkit-transform: $value;
+    -o-transform: $value;
+    -ms-transform: $value;
+}
+
+@mixin box-shadow($value) {
+    box-shadow: $value;
+    -moz-box-shadow: $value;
+    -webkit-box-shadow: $value;
+    -o-box-shadow: $value;
+    -ms-box-shadow: $value;
+}

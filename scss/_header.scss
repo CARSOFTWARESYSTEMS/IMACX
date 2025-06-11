@@ -1,0 +1,346 @@
+/*===========================
+      02.HEADER css 
+===========================*/
+
+
+/*===== NAVBAR =====*/
+$white: #fff;
+$black: #333;
+$heading-color: #333;
+$theme-color: #e33333;
+
+// Responsive Variables
+$xl-desktop: 'only screen and (min-width: 1921px)';
+$desktop: 'only screen and (min-width: 1400px) and (max-width: 1920px)';
+$laptop: 'only screen and (min-width: 1200px) and (max-width: 1399px)';
+$lg : 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$md:'only screen and (min-width: 768px) and (max-width: 991px)';
+$xs:'(max-width: 767px)';
+$sm: 'only screen and (min-width: 576px) and (max-width: 767px)';
+
+
+
+
+
+.navbar-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 99;
+	@include transition(0.3s);
+}
+
+
+.sticky {
+	position: fixed;
+	z-index: 99;
+	@include transition(0.3s);
+
+	& .navbar {
+		padding: 10px 0;
+	}
+}
+
+
+.navbar {
+	position: relative;
+	@include transition(0.3s);
+	padding: 20px 0;
+
+}
+
+.navbar-brand {
+	padding: 0;
+
+	img {
+		max-width: 150px;
+	}
+}
+
+
+.navbar-toggler {
+	padding: 0;
+
+	& .toggler-icon {
+		width: 30px;
+		height: 2px;
+		background-color: $white;
+		display: block;
+		margin: 5px 0;
+		position: relative;
+		@include transition(0.3s);
+	}
+
+	&.active {
+		& .toggler-icon {
+			&:nth-of-type(1) {
+				@include transform(rotate(45deg));
+				top: 7px;
+			}
+
+			&:nth-of-type(2) {
+				opacity: 0;
+			}
+
+			&:nth-of-type(3) {
+				@include transform(rotate(135deg));
+				top: -7px;
+			}
+		}
+	}
+}
+
+
+.navbar-collapse {
+	@media #{$md} {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: $white;
+		z-index: 9;
+		@include box-shadow (0px 15px 20px 0px rgba(0, 0, 0, 0.1));
+		padding: 5px 12px;
+	}
+
+	@media #{$xs} {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: $white;
+		z-index: 9;
+		@include box-shadow (0px 15px 20px 0px rgba($heading-color, 0.1));
+		padding: 5px 12px;
+	}
+}
+
+
+.navbar-nav {
+	align-items: center;
+
+	@media #{$md} {
+		align-items: flex-start;
+	}
+
+	@media #{$xs} {
+		align-items: flex-start;
+	}
+
+	& .nav-item {
+		margin-left: 25px;
+		position: relative;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		@media #{$lg} {
+			margin-left: 18px;
+		}
+		@media #{$md} {
+			margin: 0;
+		}
+
+		@media #{$xs} {
+			margin: 0;
+		}
+
+		& a {
+			font-family: 'Poppins', sans-serif;
+			font-size: 16px;
+			font-weight: 500;
+			color: $white;
+			@include transition(0.3s);
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				width: 0%;
+				height: 2px;
+				background: $white;
+				left: 0;
+				bottom: -10px;
+				@include transition(.3s);
+
+				@media #{$md} {
+					background: none;
+				}
+
+				@media #{$xs} {
+					background: none;
+				}
+			}
+
+			@media #{$md} {
+				display: block;
+				padding: 6px 0;
+				color: $black;
+			}
+
+			@media #{$xs} {
+				display: block;
+				padding: 6px 0;
+				color: $black;
+			}
+
+			&.btn-singin {
+				&:hover {
+					@include box-shadow(0px 0px 0px 0px rgba(96, 94, 94, 0.17));
+				}
+
+				@media #{$md} {
+					padding: 10px 30px;
+					margin-left: 0px;
+				}
+
+				@media #{$xs} {
+					padding: 10px 30px;
+					margin-left: 0px;
+				}
+				
+				&::after {
+					display: none;
+				}
+
+			}
+			&.btn-light-singin {
+
+				@media #{$md} {
+					padding: 10px 30px;
+					margin-left: 0px;
+				}
+				@media #{$xs} {
+					padding: 10px 30px;
+					margin-left: 0px;
+				}
+
+				::after {
+					display: none;
+				}
+			}
+			
+			
+		}
+
+		&.active,
+		&:hover {
+			&>a {
+
+				@media #{$md} {
+					color: #3ecf8e;
+				}
+				@media #{$xs} {
+					color: #3ecf8e;
+				}
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+
+		&:hover {
+			& .sub-menu {
+				top: 100%;
+				opacity: 1;
+				visibility: visible;
+
+				@media #{$md} {
+					top: 0;
+				}
+
+				@media #{$xs} {
+					top: 0;
+				}
+			}
+		}
+
+		& .sub-menu {
+			width: 200px;
+			background-color: $white;
+			@include box-shadow (0px 0px 20px 0px rgba(0, 0, 0, 0.1));
+			position: absolute;
+			top: 110%;
+			left: 0;
+			opacity: 0;
+			visibility: hidden;
+			@include transition(0.3s);
+
+			@media #{$md} {
+				position: relative;
+				width: 100%;
+				top: 0;
+				display: none;
+				opacity: 1;
+				visibility: visible;
+			}
+
+			@media #{$xs} {
+				position: relative;
+				width: 100%;
+				top: 0;
+				display: none;
+				opacity: 1;
+				visibility: visible;
+			}
+
+			& li {
+				display: block;
+
+				& a {
+					display: block;
+					padding: 8px 20px;
+					color: $black;
+
+					&.active,
+					&:hover {
+						padding-left: 25px;
+						color: $theme-color;
+					}
+				}
+			}
+		}
+	}
+
+	& .sub-nav-toggler {
+		display: none;
+
+		@media #{$md} {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: none;
+			color: $black;
+			font-size: 18px;
+			border: 0;
+			width: 30px;
+			height: 30px;
+		}
+
+		@media #{$xs} {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: none;
+			color: $black;
+			font-size: 18px;
+			border: 0;
+			width: 30px;
+			height: 30px;
+		}
+
+		& span {
+			width: 8px;
+			height: 8px;
+			border-left: 1px solid $black;
+			border-bottom: 1px solid $black;
+			@include transform(rotate(-45deg));
+			position: relative;
+			top: -5px;
+		}
+	}
+}

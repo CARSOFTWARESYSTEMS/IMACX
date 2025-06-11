@@ -1,0 +1,31 @@
+/* ==========================================================================
+  Contact section
+   ========================================================================== */
+#contact {
+  form#contactForm {
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      min-height: 52px;
+      padding: 0px 0 0 28px;
+      font-size: 16px;
+      color: #5e629c;
+    }
+
+    textarea {
+      padding: 15px 0 0 28px;
+      font-size: 16px;
+      color: #5e629c;
+    }
+
+    .form-control:focus {
+      border: 1px solid #3ecf8e;
+      outline: none;
+      box-shadow: none;
+      background: #e5fff3;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+/* ==========================================================================
+  Hero Area
+   ========================================================================== */
+
+// Home header one
+.hero-area {
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgb(85, 51, 255);
+    background: linear-gradient(95deg, rgba(85, 51, 255, 1) 40%, rgba(37, 221, 245, 1) 100%);
+    -webkit-transform: skewY(-12deg);
+    transform: skewY(-12deg);
+    -webkit-transform-origin: 0;
+    transform-origin: 0;
+    z-index: -12;
+
+    :nth-child(1) {
+      width: 33.33333%;
+      width: calc(100% / 2);
+      top: 0;
+      left: 16.66666%;
+      left: calc(calc(100% / 3) / 2);
+      right: auto;
+      background: rgb(85, 51, 255);
+      background: linear-gradient(95deg, rgba(85, 51, 255, 1) 40%, rgba(37, 221, 245, 1) 100%);
+      height: 200px;
+    }
+
+    :nth-child(2) {
+      width: 33.33333%;
+      width: calc(100% / 3);
+      bottom: 0;
+      background: rgb(85, 51, 255);
+      background: linear-gradient(95deg, rgba(85, 51, 255, 1) 40%, rgba(37, 221, 245, 1) 100%);
+      position: absolute;
+      height: 155px;
+      left: 3%;
+    }
+  }
+
+  .contents {
+    padding: 220px 0;
+
+    @media #{$xs} {
+      padding-bottom: 0px;
+    } 
+
+    h2 {
+      color: #fff;
+      font-size: 38px;
+      font-weight: 600;
+      line-height: 60px;
+      margin-bottom: 20px;
+
+      br {
+        @media #{$lg} {
+          display: none;
+        }
+      }
+    }
+
+    p {
+      color: #fff;
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    .btn {
+      margin-top: 40px;
+      margin-right: 20px;
+      text-transform: uppercase;
+      width: 180px;
+      height: 50px;
+      padding: 15px 15px;
+    }
+
+    .btn-border {
+      border: 1px solid #fff;
+      color: #3ecf8e !important;
+      box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+      width: 180px;
+      height: 50px;
+      padding: 15px 15px;
+      background: #fff;
+
+      &:hover {
+        background: #fff;
+        color: #3ecf8e;
+      }
+    }
+  }
+
+  .intro-img {
+    padding: 180px 0 0px;
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+}

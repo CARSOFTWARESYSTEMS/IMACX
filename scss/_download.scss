@@ -1,0 +1,120 @@
+/* ==========================================================================
+	Features 
+   ========================================================================== */
+#download-app {
+	padding-bottom: 100px;
+
+	.download-info {
+		padding-top: 30px;
+
+		h3 {
+			font-size: 35px;
+			font-weight: 600;
+			margin-bottom: 20px;
+			line-height: 44px;
+		}
+
+		p {
+			font-size: 16px;
+			display: block;
+			margin-bottom: 35px;
+		}
+
+		.downlaod-btn {
+			padding-bottom: 50px;
+			border-bottom: 1px solid #ff704f;
+			margin-bottom: 40px;
+		}
+
+		.downlaod-btn a.play-store {
+			font-size: 12px;
+			box-shadow: 0px 10px 20px 2px rgba(255, 112, 79, 0.24);
+			border-radius: 35px;
+			text-transform: inherit;
+			text-align: left;
+			padding: 15px 80px;
+			width: 195px;
+			height: 65px;
+			line-height: 18px;
+			margin-right: 35px;
+			background: #ff704f;
+			background-position-x: left;
+			background-position-y: center;
+			background-position: 20%;
+		}
+
+		.downlaod-btn a {
+			position: relative;
+		}
+
+		.downlaod-btn a.play-store span {
+			font-size: 15px;
+			font-weight: 500;
+		}
+
+		.downlaod-btn a.play-store i {
+			position: absolute;
+			left: 40px;
+			font-size: 28px;
+			color: #fff;
+			top: 18px;
+		}
+
+		.downlaod-btn a.ios-store i {
+			position: absolute;
+			left: 40px;
+			font-size: 28px;
+			color: #000;
+			top: 18px;
+		}
+
+		.downlaod-btn a.ios-store {
+			border: 1px solid#ff704f;
+			color: #151948;
+			font-size: 12px;
+			@include box-shadow(0px 10px 20px 2px rgba(255, 112, 79, 0.24));
+			border-radius: 35px;
+			text-transform: inherit;
+			text-align: left;
+			padding: 15px 80px;
+			width: 195px;
+			height: 65px;
+			line-height: 18px;
+			margin-right: 35px;
+			background: #fff;
+			background-position-x: left;
+			background-position-y: center;
+			background-position: 20%;
+			position: relative;
+		}
+
+		.downlaod-btn a.play-store:hover {
+			color: #151948;
+			@include transition(.8s);
+		}
+
+		.downlaod-btn a.ios-store span {
+			font-size: 15px;
+		}
+
+		.downlaod-btn a.ios-store:hover {
+			color: #ff704f;
+			@include transition(.8s);
+		}
+
+	}
+
+	.download-statatics {
+		h3 {
+			color: #151948;
+			font-size: 30px;
+			font-weight: 600;
+			margin-bottom: 0px;
+		}
+
+		p {
+			font-size: 18px;
+			color: #5e629c;
+		}
+	}
+}
