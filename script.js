@@ -30,6 +30,15 @@ function initScrollReveal() {
     reveals.forEach(reveal => {
         observer.observe(reveal);
     });
+
+    // Fallback if IntersectionObserver doesn't fire (e.g., some older mobile browsers)
+    setTimeout(() => {
+        reveals.forEach(reveal => {
+            if (!reveal.classList.contains('active')) {
+                reveal.classList.add('active');
+            }
+        });
+    }, 2000);
 }
 
 // 2. Mobile Menu Toggle
@@ -97,25 +106,33 @@ function initGallery() {
     items.forEach(item => {
         const div = document.createElement('div');
         div.className = `gallery-item reveal ${item.type === 'video' ? 'video-item' : ''}`;
-        const path = `${item.folder}${item.file}`;
+        const path = `./${item.folder}${item.file}`;
 
         if (item.type === 'video') {
             div.innerHTML = `
-                <video src="${path}" muted loop playsinline></video>
+                <video muted loop playsinline preload="metadata">
+                    <source src="${path}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 <div class="gallery-overlay">
                     <i class="fas fa-play-circle"></i>
                 </div>
             `;
-            // Hover to play preview
-            div.addEventListener('mouseenter', () => div.querySelector('video').play());
+            // Hover/Touch to play preview
+            div.addEventListener('mouseenter', () => {
+                const v = div.querySelector('video');
+                if (v) v.play().catch(() => { });
+            });
             div.addEventListener('mouseleave', () => {
                 const v = div.querySelector('video');
-                v.pause();
-                v.currentTime = 0;
+                if (v) {
+                    v.pause();
+                    v.currentTime = 0;
+                }
             });
         } else {
             div.innerHTML = `
-                <img src="${path}" alt="Gallery Image ${item.file}" loading="lazy">
+                <img src="${path}" alt="Gallery Image ${item.file}">
                 <div class="gallery-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
@@ -163,7 +180,8 @@ function openLightbox(src, caption, type = 'image') {
         lightboxImg.style.display = 'none';
         lightboxVid.style.display = 'block';
         lightboxVid.src = src;
-        lightboxVid.play();
+        lightboxVid.load(); // Force load on mobile
+        lightboxVid.play().catch(e => console.log("Autoplay blocked or load failed", e));
     } else {
         lightboxVid.style.display = 'none';
         lightboxVid.pause();
