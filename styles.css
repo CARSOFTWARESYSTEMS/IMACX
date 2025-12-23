@@ -315,15 +315,104 @@ section {
     }
 }
 
-.featured-img-wrapper {
-    max-width: 450px;
-    /* Further reduced from 500px */
+.featured-grid {
+    display: grid;
+    grid-template-columns: 2fr 0.6fr;
+    /* Ratio adjusted to significantly shrink the 2nd image */
+    gap: 30px;
+    align-items: center;
+    max-width: 900px;
     margin: 0 auto;
+}
+
+.featured-img-wrapper {
+    width: 100%;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--glass-border);
     animation: floating 6s ease-in-out infinite;
+}
+
+.logo-wrap {
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    /* Minimized padding */
+}
+
+.logo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 1px 3px rgba(0, 212, 255, 0.05));
+    animation: logo-pulse 4s ease-in-out infinite;
+}
+
+.photo-wrap {
+    height: auto;
+    max-height: 280px;
+    /* Restricting height to make it smaller than the logo block */
+    display: flex;
+}
+
+.photo-wrap img {
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .logo-wrap {
+        padding: 5px;
+    }
+}
+
+/* Logo Display Section */
+.logo-display-wrapper {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.display-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 1px 3px rgba(0, 212, 255, 0.05));
+    animation: logo-pulse 4s ease-in-out infinite;
+    transition: var(--transition);
+}
+
+.display-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 25px rgba(0, 212, 255, 0.4));
+}
+
+@keyframes logo-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 1px 3px rgba(0, 212, 255, 0.03));
+    }
+
+    50% {
+        transform: scale(1.01);
+        filter: drop-shadow(0 2px 5px rgba(0, 212, 255, 0.08));
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-display-wrapper {
+        max-width: 200px;
+    }
 }
 
 .featured-img {
@@ -925,8 +1014,8 @@ section {
     }
 
     .featured-img-wrapper {
-        max-width: 85%;
-        /* Fits better on mobile screens */
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     .why-us-wrapper {

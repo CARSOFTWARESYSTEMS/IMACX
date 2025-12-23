@@ -66,7 +66,7 @@ function initGallery() {
     if (!galleryGrid) return;
 
     const items = [
-        { type: 'image', file: 'Imax-image.png', folder: 'public/images/' }, // Master Logo
+        { type: 'image', file: 'Rakshith.jpeg', folder: 'public/images/' }, // Master Logo
         { type: 'video', file: 'Video_0.mp4', folder: 'public/images/' },
         { type: 'video', file: '104.MP4', folder: 'public/gallery/', poster: '104.jpg' },
         { type: 'image', file: '100.avif', folder: 'public/gallery/' },
