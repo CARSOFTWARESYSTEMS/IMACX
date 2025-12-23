@@ -68,7 +68,7 @@ function initGallery() {
     const items = [
         { type: 'image', file: 'Imax-image.png', folder: 'public/images/' }, // Master Logo
         { type: 'video', file: 'Video_0.mp4', folder: 'public/images/' },
-        { type: 'video', file: '104.MP4', folder: 'public/gallery/' },
+        { type: 'video', file: '104.MP4', folder: 'public/gallery/', poster: '104.jpg' },
         { type: 'image', file: '100.avif', folder: 'public/gallery/' },
         { type: 'image', file: '101.avif', folder: 'public/gallery/' },
         { type: 'image', file: '101.jpg', folder: 'public/gallery/' },
@@ -93,7 +93,7 @@ function initGallery() {
         { type: 'image', file: '1018.avif', folder: 'public/gallery/' },
         { type: 'image', file: '1019.avif', folder: 'public/gallery/' },
         { type: 'image', file: '1020.avif', folder: 'public/gallery/' },
-        { type: 'image', file: '1021.avif', folder: 'public/gallery/' },
+        { type: 'image', file: '1021.jpg', folder: 'public/gallery/' },
         { type: 'image', file: '1022.avif', folder: 'public/gallery/' },
         { type: 'image', file: '1023.avif', folder: 'public/gallery/' },
         { type: 'image', file: '1024.avif', folder: 'public/gallery/' },
@@ -109,8 +109,9 @@ function initGallery() {
         const path = `./${item.folder}${item.file}`;
 
         if (item.type === 'video') {
+            const posterPath = item.poster ? `./${item.folder}${item.poster}` : '';
             div.innerHTML = `
-                <video muted loop playsinline preload="metadata">
+                <video muted loop playsinline preload="metadata" ${posterPath ? `poster="${posterPath}"` : ''}>
                     <source src="${path}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -139,7 +140,7 @@ function initGallery() {
             `;
         }
 
-        div.addEventListener('click', () => openLightbox(path, item.file, item.type));
+        div.addEventListener('click', () => openLightbox(path, item.file, item.type, item.poster));
         galleryGrid.appendChild(div);
     });
 
@@ -166,7 +167,7 @@ function initLightbox() {
     });
 }
 
-function openLightbox(src, caption, type = 'image') {
+function openLightbox(src, caption, type = 'image', poster = '') {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxVid = document.getElementById('lightbox-video');
@@ -179,6 +180,11 @@ function openLightbox(src, caption, type = 'image') {
     if (type === 'video') {
         lightboxImg.style.display = 'none';
         lightboxVid.style.display = 'block';
+        if (poster) {
+            lightboxVid.setAttribute('poster', `./public/gallery/${poster}`);
+        } else {
+            lightboxVid.removeAttribute('poster');
+        }
         lightboxVid.src = src;
         lightboxVid.load(); // Force load on mobile
         lightboxVid.play().catch(e => console.log("Autoplay blocked or load failed", e));
