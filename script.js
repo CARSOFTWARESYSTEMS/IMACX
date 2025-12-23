@@ -133,14 +133,14 @@ function initGallery() {
             });
         } else {
             div.innerHTML = `
-                <img src="${path}" alt="Gallery Image ${item.file}">
+                <img src="${path}" alt="I MACX Gallery Item">
                 <div class="gallery-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
             `;
         }
 
-        div.addEventListener('click', () => openLightbox(path, item.file, item.type, item.poster));
+        div.addEventListener('click', () => openLightbox(path, "", item.type, item.poster));
         galleryGrid.appendChild(div);
     });
 
@@ -193,6 +193,7 @@ function openLightbox(src, caption, type = 'image', poster = '') {
         lightboxVid.pause();
         lightboxImg.style.display = 'block';
         lightboxImg.src = src;
+        lightboxImg.alt = "I MACX Detail View";
     }
 }
 
